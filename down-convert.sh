@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 DIR=$1
 
 if [ ! -d "$DIR" ]
@@ -12,15 +14,15 @@ FILES=`find $DIR | grep ts$ | sort`
 
 for FILE in $FILES
 do
-	echo sudo ffmpeg -i $FILE \
+	sudo ffmpeg -i $FILE \
 		-f mpegts \
 		-vf scale=iw*.5:ih*.5 \
 		-vcodec mpeg2video \
 		-qscale:v 5 \
 		$FILE.mpg
-	echo sudo mv $FILE.mpg $FILE
+	sudo mv $FILE.mpg $FILE
 done
 
-echo sudo vdr --genindex=$DIR
-echo sudo chown -R vdr $DIR
+sudo vdr --genindex=$DIR
+sudo chown -R vdr $DIR
 
