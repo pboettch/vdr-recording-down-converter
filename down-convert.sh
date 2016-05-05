@@ -15,7 +15,6 @@ do
 	echo sudo ffmpeg -i $FILE \
 		-f mpegts \
 		-vf scale=iw*.5:ih*.5 \
-		-acodec copy \
 		-vcodec mpeg2video \
 		-qscale:v 5 \
 		$FILE.mpg
