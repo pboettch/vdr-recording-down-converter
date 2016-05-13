@@ -17,8 +17,8 @@ do
 	sudo ffmpeg -i $FILE \
 		-f mpegts \
 		-vf scale=iw*.5:ih*.5 \
-		-vcodec mpeg2video \
-		-qscale:v 5 \
+		-vcodec h264 \
+		-qscale:v 4 \
 		$FILE.mpg
 	sudo mv $FILE.mpg $FILE
 done
